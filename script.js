@@ -12,7 +12,7 @@ const CONFIG = {
 
   // Link do checkout. Os parâmetros da URL da página (utm_*, fbclid, src…)
   // são repassados automaticamente para o checkout.
-  checkoutUrl: '#',
+  checkoutUrl: 'https://pay.hotmart.com/M51946131S?checkoutMode=10&bid=1795529626217',
 
   // Abrir o checkout em nova aba? (false = mesma aba, recomendado)
   checkoutNewTab: false,
