@@ -27,25 +27,26 @@
   <link rel="stylesheet" href="style.css?v=4">
 
   <!-- =====================================================================
-       META PIXEL — cole aqui o código base do Pixel (substitua SEU_PIXEL_ID)
-       O script.js já dispara automaticamente, se o fbq existir:
-         • PageView         (pelo próprio código base)
-         • VideoPlay        (personalizado) quando o visitante ativa o som
-         • ViewContent      quando a oferta é liberada
-         • InitiateCheckout no clique do botão "QUERO MEUS 100 SERMÕES"
-       ---------------------------------------------------------------------
+       META PIXEL — 793346842844237
+       Eventos:
+         • PageView         (código base, ao abrir a página)
+         • VideoPlay        (personalizado, script.js) quando o visitante ativa o som
+         • ViewContent      (script.js) quando a oferta é liberada aos 120 s
+         • CliqueCheckout   (personalizado, script.js) no clique do botão "QUERO MEUS 100 SERMÕES"
+         • InitiateCheckout e Purchase: disparados pelo próprio checkout da Hotmart
+       ===================================================================== -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'SEU_PIXEL_ID');
+    fbq('init', '793346842844237');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none" alt=""
-    src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"></noscript>
-       ===================================================================== -->
+    src="https://www.facebook.com/tr?id=793346842844237&ev=PageView&noscript=1"></noscript>
+  <!-- Fim do Meta Pixel -->
 </head>
 <body>
   <!-- Cenário de fundo (decorativo) -->
@@ -169,6 +170,6 @@
     <p class="sr-only" aria-live="polite" data-announce></p>
   </main>
 
-  <script src="script.js?v=6" defer></script>
+  <script src="script.js?v=8" defer></script>
 </body>
 </html>

@@ -87,12 +87,26 @@ const CONFIG = {
 
   cta.href = buildCheckoutUrl();
   if (CONFIG.checkoutNewTab) { cta.target = '_blank'; cta.rel = 'noopener'; }
+  let leaving = false;
   cta.addEventListener('click', (e) => {
-    if (cta.getAttribute('href') === '#') {
+    const href = cta.getAttribute('href');
+    if (href === '#') {
       e.preventDefault();
       console.warn('[VSL] Configure CONFIG.checkoutUrl em script.js');
+      return;
     }
-    track('InitiateCheckout', { value: 50.0, currency: 'BRL', content_name: '100 Sermões' });
+    if (leaving) { e.preventDefault(); return; }   // evita duplo clique
+    // Personalizado: o checkout da Hotmart já dispara InitiateCheckout (e Purchase)
+    // neste mesmo Pixel; um InitiateCheckout aqui contaria em dobro.
+    track('CliqueCheckout', { value: 50.0, currency: 'BRL', content_name: '100 Sermões' }, true);
+
+    // Mesma aba: espera 300 ms para o Pixel enviar o evento antes de sair.
+    const newTab = cta.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0;
+    if (!newTab && typeof window.fbq === 'function') {
+      e.preventDefault();
+      leaving = true;
+      setTimeout(() => { location.href = href; }, 300);
+    }
   });
 
   /* ---------- Oferta ------------------------------------------------------ */
